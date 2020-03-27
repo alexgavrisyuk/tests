@@ -1,5 +1,6 @@
 using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using AccountService.Api;
 using AccountService.Domain.Repositories;
 using AccountService.Infrastructure;
@@ -58,6 +59,8 @@ namespace AccountService.IntegrationsTests.Infrastructure
                     });
                 });
             TestClient = appFactory.CreateClient();
+            TestClient.DefaultRequestHeaders.Authorization = 
+                new AuthenticationHeaderValue("Test");
         }
     }
 }
